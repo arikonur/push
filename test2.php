@@ -24,5 +24,16 @@ $response = curl_exec($ch);
 curl_close($ch);
 
 $resultData = json_decode($response, true);
-echo $resultData;
+echo "<pre>";
+print_r ($resultData);
+echo "<pre>";
+$playersID=$resultData['players'][0]['external_user_id'];
+foreach($resultData as $userID){
+    $i=0;
+    $playersID=$resultData['players'][$i]['external_user_id'];
+    echo ("user id :".$playersID);
+
+    $i++;
+}
+
 ?>

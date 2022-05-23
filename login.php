@@ -11,15 +11,14 @@ if(isset($_POST['submit'])){
     $row = $result->fetch_assoc();
     
     if($username == '' or $password == ''){
-	$error = "username and password cannot be blank";
+	$error = "username or password empty";
 	} else{
 	//store value	
     $u = $row['username'];
     $p = $row['password'];
     
     if($u == $username And $p == $password){
-	 $error = "<p class='text-primary'>Login successfully.. Please 
-	 Wait 3 sec..</p>";
+	 $error = "<p class='text-primary'>Login successfully</p>";
 	 session_start();
 	 $_SESSION['username'] = $_POST['username'];
 	 
@@ -59,7 +58,7 @@ if(isset($_POST['submit'])){
 <div style="width:40%;  margin:0 auto;"> 
 
 <div style="margin-top:10%;">
-	<div style="text-align:center;"> <h1> cPanel </h1> <p style="font-size:12px;color:#737373;">Onesignal Push Notification </p> <hr></div>
+	<div style="text-align:center;"> <h1> ProjePush </h1> <p style="font-size:12px;color:#737373;">Onesignal Push Notification </p> <hr></div>
 	
  <form action="" method="POST">
   <div class="form-group">
