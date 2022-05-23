@@ -5,6 +5,8 @@ $query = "SELECT * FROM admin";
 $result = $db->query($query);
 $row = $result->fetch_assoc();
 $usr = $row['username'];
+//
+
 
 if ($_SESSION['username'] == $usr){;?>
 
@@ -13,6 +15,7 @@ if ($_SESSION['username'] == $usr){;?>
 
 
 <?PHP
+
 
 $message='';
 date_default_timezone_set('Europe/Istanbul');
@@ -38,12 +41,12 @@ while($row = $result->fetch_assoc()) {
         "en" => $message,
     );
     $hashes_array = array();
-    array_push($hashes_array, array(
+    $hashes_array[] = array(
         "id" => "like-button",
         "text" => "Like",
         "icon" => "http://i.imgur.com/N8SN8ZS.png",
         "url" => "https://site.com"
-    ));
+    );
     array_push($hashes_array, array(
         "id" => "like-button-2",
         "text" => "Like2",
@@ -59,16 +62,19 @@ while($row = $result->fetch_assoc()) {
         'data' => array(
             "foo" => "bar"
         ),
+
         'contents' => $content,
         'delivery_time_of_day' => $date = date('d-m-y h:i:s'),
         'web_url' => $web,
         'app_url' => $android,
         'web_buttons' => $hashes_array
     );
+
     
     $fields = json_encode($fields);
     
     $ch = curl_init();
+
     curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json; charset=utf-8',
@@ -86,6 +92,11 @@ while($row = $result->fetch_assoc()) {
     return $response;
 }}
 
+///
+
+
+  ///
+
 if(isset($_POST['submit'])){
 $response = sendMessage();
 }
@@ -101,12 +112,14 @@ echo print_r($data);
  echo '</pre>'; 
 */
 
+
 if ($data['id'] == '') {
 	
 	} else {
-		$message = "<div class='bg alert-danger p-2'>Başarılı</div>";
-		}
- 
+
+		$message = "<div class='bg alert-danger p-2'>Başarılı:</div>" ;
+}
+
  
 foreach($data['errors'] as $row){
 if($row[0] == ''){
@@ -205,6 +218,7 @@ if($row[0] == ''){
     <label for="segments" class="text-secondary">Kategori:</label>
     <select class="form-control" name="segments">
       <option value="Subscribed Users">Aboneler</option>
+      <option value="Segment 1 session">2 Session</option>
       <option value="New Users"> Yeni kullanıcılar</option>
       <option>None</option>
     </select>
